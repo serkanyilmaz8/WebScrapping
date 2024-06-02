@@ -6,7 +6,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.utils.class_weight import compute_class_weight
 
-# Veri setini yükleme
 file_path = 'ml_ready_data.csv'
 data = pd.read_csv(file_path)
 

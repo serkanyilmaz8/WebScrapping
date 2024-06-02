@@ -54,3 +54,35 @@ plt.title('İşletme Sermayesi ve Fiyat İstikrarı Gün Sayısı İlişkisi')
 
 plt.tight_layout()
 plt.show()
+
+# 5. Halka Arz Büyüklüğüne Göre Hasılat Artışı
+# Gerekli sütunları seçme
+required_columns = ['hasilat_3_yil_once (Milyar)', 'hasilat_1_yil_once (Milyar)', 'halka_arz_buyuklugu (Milyar TL)']
+data_temp = data[required_columns].copy()
+
+# İki sütun arasındaki farkı hesaplama
+data_temp.loc[:, 'hasilat_artisi'] = data_temp['hasilat_1_yil_once (Milyar)'] - data_temp['hasilat_3_yil_once (Milyar)']
+
+# Scatter plot oluşturma
+plt.figure(figsize=(12, 8))
+sns.scatterplot(x='halka_arz_buyuklugu (Milyar TL)', y='hasilat_artisi', data=data_temp)
+plt.title('Halka Arz Büyüklüğüne Göre Hasılat Artışı')
+plt.xlabel('Halka Arz Büyüklüğü (Milyar TL)')
+plt.ylabel('Hasılat Artışı (Milyar)')
+plt.show()
+
+# 6. Halka Arz Büyüklüğüne Göre Brüt Kar Farkı
+# Gerekli sütunları seçme
+required_columns = ['brut_kar_3_yil_once (Milyar)', 'brut_kar_1_yil_once (Milyar)', 'halka_arz_buyuklugu (Milyar TL)']
+data_temp = data[required_columns].copy()
+
+# İki sütun arasındaki farkı hesaplama
+data_temp.loc[:, 'brut_kar_farki'] = data_temp['brut_kar_1_yil_once (Milyar)'] - data_temp['brut_kar_3_yil_once (Milyar)']
+
+# Scatter plot oluşturma
+plt.figure(figsize=(12, 8))
+sns.scatterplot(x='halka_arz_buyuklugu (Milyar TL)', y='brut_kar_farki', data=data_temp)
+plt.title('Halka Arz Büyüklüğüne Göre Brüt Kar Farkı')
+plt.xlabel('Halka Arz Büyüklüğü (Milyar TL)')
+plt.ylabel('Brüt Kar Artışı')
+plt.show()
